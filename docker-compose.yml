@@ -6,7 +6,6 @@ services:
     image: mysql:5.7
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./db_data:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -23,8 +22,7 @@ services:
     ports:
       - 8000:80
     restart: always
-    links:
+    volumes:
+      - ./html:/var/www/html/
+    depends_on:
       - db
-
-volumes:
-  db_data:

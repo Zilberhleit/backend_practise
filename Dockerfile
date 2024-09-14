@@ -1,11 +1,9 @@
-FROM ubuntu:latest
+FROM php:8.2-apache
 
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apache2 php php-cli php-mysql 
-RUN apt-get clean 
-RUN echo "ServerName localhost" >> /etc/apache2/sites-available/000-default.conf
+RUN docker-php-ext-install mysqli
 
-COPY index.php /var/www/html/
-COPY style.css /var/www/html/
+WORKDIR /var/www/html/
+
+EXPOSE 80 
 
 CMD ["apache2ctl", "-D", "FOREGROUND"]
