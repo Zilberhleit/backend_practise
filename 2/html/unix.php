@@ -11,10 +11,11 @@
     <input type="submit" value="Отправить"/>
 </form>
 <?php
+include "unix_server.php";
 if (isset($_POST["command"])){
     $command = $_POST["command"];
     echo "Вывод: ";
-    echo shell_exec($command);
+    ubluentu($command);
 }
 ?>
 </body>
